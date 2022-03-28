@@ -18,13 +18,13 @@ class LoanCalculator:
         self.monthlyPaymentVar = StringVar()
         self.totalPaymentVar = StringVar()
         # labels that display the monthly and total payment
-        labelMonthlyPayment = Label(window, textvariable=self.monthlyPaymentVar).grid(row=4, column=1,sticky=E)
-        labelTotalPayment = Label(window, text=self.totalPaymentVar).grid(row=5,column=1,sticky=E)
+        labelMonthlyPayment = Label(window, textvariable=self.monthlyPaymentVar).grid(row=4, column=2,sticky=E)
+        labelTotalPayment = Label(window, textvariable=self.totalPaymentVar).grid(row=5,column=2,sticky=E)
         
         # defining and placing entry boxes in the parent window
         Entry(window,textvariable=self.annualInterestRateVar,justify=RIGHT).grid(row=1,column=2)
         Entry(window,textvariable=self.numberOfYearsVar, justify=RIGHT).grid(row=2, column=2)
-        Entry(window,textvariable=self.loanAmountVar).grid(row=3, column=2)
+        Entry(window,textvariable=self.loanAmountVar,justify=RIGHT).grid(row=3, column=2)
 
         # create a button that computes and returns the payment to be made
         Button(window,text='Compute Payment',command=self.ComputePayment).grid(row=6, column=3, sticky=E)
@@ -44,7 +44,7 @@ class LoanCalculator:
     def getmonthlyPayment(self,
             loanAmount,monthlyInterestRate,numberOfYears):
         monthlyPayment = loanAmount * monthlyInterestRate / (1 - 
-                    1 / (1+monthlyInterestRate) ** (numberOfYears * 12))
+                        1 / (1+monthlyInterestRate) ** (numberOfYears * 12))
         return monthlyPayment
 
 
